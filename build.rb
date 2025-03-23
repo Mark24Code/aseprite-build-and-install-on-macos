@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 require_relative "runner"
 
 builder = Runner.new do
