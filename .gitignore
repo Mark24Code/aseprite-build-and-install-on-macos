@@ -1,0 +1,6 @@
+aseprite
+*.zip
+mount
+*.app
+*.dmg
+.DS_Store
