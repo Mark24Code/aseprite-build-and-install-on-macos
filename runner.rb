@@ -50,7 +50,7 @@ class Runner
     @tasks.each do |task|
       @current_task = task
       blk = @current_task.task_block
-      puts "#{"*"* 16}".green
+      puts "#{"-"* 20}".green
       puts "[start task@#{@current_task.task_id}] #{@current_task.task_desc}".green
       instance_eval(&blk)
       puts "[finished task@#{@current_task.task_id}]".green
