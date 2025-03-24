@@ -22,7 +22,7 @@ Test on MacOS 15.3.2
 
 ## Use
 
-`./install.rb`
+`$ ./install.rb`
 
 
 ## Ref
