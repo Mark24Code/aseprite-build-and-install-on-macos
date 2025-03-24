@@ -54,11 +54,11 @@ SHELL
     sh command_code
   end
 
-  task "build local Aseprite.app" do
-    sh "mkdir -p Aseprite.app/Contents"
-    sh "cp -r ./aseprite/build/bin ./Aseprite.app/Contents/"
-    sh "mv ./Aseprite.app/Contents/bin ./Aseprite.app/Contents/MacOS"
-  end
+  # task "build local Aseprite.app" do
+  #  sh "mkdir -p Aseprite.app/Contents"
+  #  sh "cp -r ./aseprite/build/bin ./Aseprite.app/Contents/"
+  #  sh "mv ./Aseprite.app/Contents/bin ./Aseprite.app/Contents/MacOS"
+  # end
 
   task "build Aseprite.app from trial app" do
     sh 'curl -O -J "https://www.aseprite.org/downloads/trial/Aseprite-v1.3.9.1-trial-macOS.dmg"'
