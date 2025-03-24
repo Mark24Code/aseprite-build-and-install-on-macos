@@ -6,7 +6,9 @@
 Build free Aseprite on MacOS
 
 Update Date: 2025-03-24
+
 Support Aseprite 1.3.9.1
+
 Test on MacOS 15.3.2
 * x86_64 ✅
 * arm64 ✅
