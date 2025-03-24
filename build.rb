@@ -30,22 +30,25 @@ builder = Runner.new do
   end
 
   task "download Skia library" do
-    sh "curl -O -L 'https://github.com/aseprite/skia/releases/download/m102-861e4743af/Skia-macOS-Release-#{@macos_arch_prefix}.zip'"
-    sh "unzip Skia-macOS-Release-#{@macos_arch_prefix}.zip -d aseprite/skia-m102"
+    prefix = @macos_arch == "arm64" ? "arm64": "x64"
+    sh "curl -O -L 'https://github.com/aseprite/skia/releases/download/m102-861e4743af/Skia-macOS-Release-#{prefix}.zip'"
+    sh "unzip Skia-macOS-Release-#{prefix}.zip -d aseprite/skia-m102"
   end
 
   task "build aseprite" do
-   command_code = <<~SHELL
+    prefix = @macos_arch == "arm64" ? "arm64": "x64"
+
+    command_code = <<~SHELL
 cd aseprite &&  mkdir build &&  cd build && \
 cmake \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-  -DCMAKE_OSX_ARCHITECTURES=#{@macos_arch} \
-  -DCMAKE_OSX_DEPLOYMENT_TARGET=#{@macos_target_verison} \
+  -DCMAKE_OSX_ARCHITECTURES=#{@macos_arch == "arm64" ? "arm64" : "x86_64"} \
+  -DCMAKE_OSX_DEPLOYMENT_TARGET=#{@macos_arch == "arm64" ? "11.0" : "10.9"} \
   -DCMAKE_OSX_SYSROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk \
   -DLAF_BACKEND=skia \
   -DSKIA_DIR=../skia-m102 \
-  -DSKIA_LIBRARY_DIR=../skia-m102/out/Release-#{@macos_arch_prefix} \
-  -DSKIA_LIBRARY=../skia-m102/out/Release-#{@macos_arch_prefix}/libskia.a \
+  -DSKIA_LIBRARY_DIR=../skia-m102/out/Release-#{prefix} \
+  -DSKIA_LIBRARY=../skia-m102/out/Release-#{prefix}/libskia.a \
   -DPNG_ARM_NEON:STRING=on \
   -G Ninja .. && \
 ninja aseprite

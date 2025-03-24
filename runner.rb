@@ -25,20 +25,7 @@ class Runner
   end
 
   def init_platform
-    @macos_arch, _ = RUBY_PLATFORM.split("-") # x86_64, ?
-    @macos_arch_prefix = nil
-    @macos_target_verison = nil
-
-    case @macos_arch
-    when /x86_64/i
-      @macos_arch_prefix = "x64"
-      @macos_target_verison = "10.9"
-    when /arm_64/i
-      @macos_arch_prefix = "arm64"
-      @macos_target_verison = "11.0"
-    else
-      raise RunnerError, "MacOS - #{@macos_arch} arch not support!"
-    end
+    @macos_arch, _ = RUBY_PLATFORM.split("-") # x86_64-darwin21, arm64-darwin21 => x86_64, arm64
   end
 
   def task(task_desc, &block)
