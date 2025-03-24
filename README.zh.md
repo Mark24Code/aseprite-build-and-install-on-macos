@@ -1,6 +1,7 @@
 # Aseprite build and install on macos
 
-Build free Aseprite on MacOS
+[中文](README.zh.md) | [English](README.md)
+
 
 在 MacOS 上构建免费的 Aseprite
 
