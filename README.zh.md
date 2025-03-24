@@ -2,6 +2,7 @@
 
 [中文](README.zh.md) | [English](README.md)
 
+![banner](./banner.png)
 
 在 MacOS 上构建免费的 Aseprite
 
