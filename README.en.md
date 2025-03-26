@@ -7,6 +7,8 @@
 
 Build free Aseprite on MacOS
 
+QQ Group：1031983069
+
 Update Date: 2025-03-24
 
 Support Aseprite 1.3.9.1
@@ -32,3 +34,25 @@ Test on MacOS 15.3.2
 * https://github.com/aseprite/aseprite/blob/main/INSTALL.md#compiling
 * https://en.bioerrorlog.work/entry/build-aseprite-source-code
 * https://gist.github.com/allangarcia/938b052a7d55d1652052e4259364260b
+
+
+# The End
+
+
+* [Weclome Feedback](https://github.com/Mark24Code/aseprite-build-and-install-on-macos/issues/new)
+* Email: mark.zhangyoung@qq.com
+
+----
+
+Buy me a coffee ~ 🥳 
+
+Wechat Pay
+
+![weixin](http://ww1.sinaimg.cn/small/44894cbbgw1f70k6ctxg4j208908a3zq.jpg)
+
+Alipay
+
+
+![zhifubao](http://ww3.sinaimg.cn/small/44894cbbgw1f70k0qnm93j20dd0ddtak.jpg)
+
+
