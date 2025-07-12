@@ -9,11 +9,11 @@ Build free Aseprite on MacOS
 
 QQ Group：1031983069
 
-Update Date: 2025-03-24
+Update Date: 2025-07-12
 
-Support Aseprite 1.3.9.1
+Support Aseprite v1.3.14.3
 
-Test on MacOS 15.3.2
+Test on MacOS 15.5
 * x86_64 ✅
 * arm64 ✅
 
@@ -44,7 +44,7 @@ Test on MacOS 15.3.2
 
 ----
 
-Buy me a coffee ~ 🥳 
+Buy me a coffee ~ 🥳
 
 Wechat Pay
 
