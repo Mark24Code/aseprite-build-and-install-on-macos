@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby
+
+# Ref: https://github.com/aseprite/aseprite/blob/main/INSTALL.md
+
 require_relative "runner"
 
 builder = Runner.new do
@@ -31,25 +34,28 @@ builder = Runner.new do
 
   task "download Skia library" do
     prefix = @macos_arch == "arm64" ? "arm64": "x64"
-    sh "curl -O -L 'https://github.com/aseprite/skia/releases/download/m102-861e4743af/Skia-macOS-Release-#{prefix}.zip'"
-    sh "unzip Skia-macOS-Release-#{prefix}.zip -d aseprite/skia-m102"
+    sh "curl -O -L 'https://github.com/aseprite/skia/releases/download/m124-08a5439a6b/Skia-macOS-Release-#{prefix}.zip'"
+    sh "unzip Skia-macOS-Release-#{prefix}.zip -d aseprite/skia-m124"
   end
 
   task "build aseprite" do
     prefix = @macos_arch == "arm64" ? "arm64": "x64"
 
+    arm_tag = @macos_arch == "arm64" ?  '-DPNG_ARM_NEON:STRING=on' : ''
+
     command_code = <<~SHELL
 cd aseprite &&  mkdir build &&  cd build && \
+export SKIA_ABS_PATH="$(pwd)/../skia-m124" && \
 cmake \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
   -DCMAKE_OSX_ARCHITECTURES=#{@macos_arch == "arm64" ? "arm64" : "x86_64"} \
   -DCMAKE_OSX_DEPLOYMENT_TARGET=#{@macos_arch == "arm64" ? "11.0" : "10.9"} \
   -DCMAKE_OSX_SYSROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk \
   -DLAF_BACKEND=skia \
-  -DSKIA_DIR=../skia-m102 \
-  -DSKIA_LIBRARY_DIR=../skia-m102/out/Release-#{prefix} \
-  -DSKIA_LIBRARY=../skia-m102/out/Release-#{prefix}/libskia.a \
-  -DPNG_ARM_NEON:STRING=on \
+  -DSKIA_DIR="$SKIA_ABS_PATH" \
+  -DSKIA_LIBRARY_DIR="$SKIA_ABS_PATH/out/Release-#{prefix}" \
+  -DSKIA_LIBRARY="$SKIA_ABS_PATH/out/Release-#{prefix}/libskia.a" \
+  #{arm_tag} \
   -G Ninja .. && \
 ninja aseprite
 
@@ -64,9 +70,9 @@ SHELL
   # end
 
   task "build Aseprite.app from trial app" do
-    sh 'curl -O -J "https://www.aseprite.org/downloads/trial/Aseprite-v1.3.9.1-trial-macOS.dmg"'
+    sh 'curl -O -J "https://www.aseprite.org/downloads/trial/Aseprite-v1.3.14.3-trial-macOS.dmg"'
     sh "mkdir mount"
-    sh "yes qy | hdiutil attach -quiet -nobrowse -noverify -noautoopen -mountpoint mount ./Aseprite-v1.3.9.1-trial-macOS.dmg"
+    sh "yes qy | hdiutil attach -quiet -nobrowse -noverify -noautoopen -mountpoint mount ./Aseprite-v1.3.14.3-trial-macOS.dmg"
     sh "cp -r mount/Aseprite.app ."
     sh "hdiutil detach mount"
     sh "rm -rf ./Aseprite.app/Contents/MacOS/aseprite"

@@ -13,11 +13,11 @@
 QQ 交流群：1031983069
 
 
-更新日期: 2025-03-24
+更新日期: 2025-07-12
 
-支持 Aseprite 1.3.9.1
+支持 Aseprite v1.3.14.3
 
-测试 MacOS 15.3.2
+测试 MacOS 15.5
 * x86_64 ✅
 * arm64 ✅
 
@@ -59,7 +59,7 @@ QQ 交流群：1031983069
 
 ----
 
-如果您觉得帮到您了，节省了大量时间。可以请作者喝杯可乐~ 🥳 
+如果您觉得帮到您了，节省了大量时间。可以请作者喝杯可乐~ 🥳
 
 微信
 
@@ -69,3 +69,7 @@ QQ 交流群：1031983069
 
 ![zhifubao](http://ww3.sinaimg.cn/small/44894cbbgw1f70k0qnm93j20dd0ddtak.jpg)
 
+
+# 参考
+
+* https://github.com/aseprite/aseprite/blob/main/INSTALL.md
