@@ -4,6 +4,10 @@
 
 require_relative "runner"
 
+TRIAL_ASEPRITE_VERSION = "1.3.14.4"
+TRIAL_ASEPRITE_NAME = "Aseprite-v#{TRIAL_ASEPRITE_VERSION}-trial-macOS.dmg"
+TRIAL_ASEPRITE = "https://www.aseprite.org/downloads/trial/#{TRIAL_ASEPRITE_NAME}"
+
 builder = Runner.new do
 
   task "clean" do
@@ -70,9 +74,9 @@ SHELL
   # end
 
   task "build Aseprite.app from trial app" do
-    sh 'curl -O -J "https://www.aseprite.org/downloads/trial/Aseprite-v1.3.14.3-trial-macOS.dmg"'
+    sh "curl -O -J '#{TRIAL_ASEPRITE}'"
     sh "mkdir mount"
-    sh "yes qy | hdiutil attach -quiet -nobrowse -noverify -noautoopen -mountpoint mount ./Aseprite-v1.3.14.3-trial-macOS.dmg"
+    sh "yes qy | hdiutil attach -quiet -nobrowse -noverify -noautoopen -mountpoint mount ./#{TRIAL_ASEPRITE_NAME}"
     sh "cp -r mount/Aseprite.app ."
     sh "hdiutil detach mount"
     sh "rm -rf ./Aseprite.app/Contents/MacOS/aseprite"
