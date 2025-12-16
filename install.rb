@@ -4,7 +4,7 @@
 
 require_relative "runner"
 
-TRIAL_ASEPRITE_VERSION = "1.3.14.4"
+TRIAL_ASEPRITE_VERSION = "1.3.16.1"
 TRIAL_ASEPRITE_NAME = "Aseprite-v#{TRIAL_ASEPRITE_VERSION}-trial-macOS.dmg"
 TRIAL_ASEPRITE = "https://www.aseprite.org/downloads/trial/#{TRIAL_ASEPRITE_NAME}"
 
